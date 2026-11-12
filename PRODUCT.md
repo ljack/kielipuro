@@ -17,6 +17,9 @@ An encouraging language-learning app built around small practice interactions. T
 ## Capabilities and Constraints
 Finnish interface, one explicitly labelled interaction example, browser-local completion state, GitHub feedback, prepared Slack integration. Lesson content, teaching method and course scope are deliberately undecided. No curriculum, real account system or learning-performance claims.
 
+## Early tester input
+Sampsa's hiragana/katakana suggestion and recognition, recall and later drawing exercises are captured in GitHub issue #3 for owner review. They are not an approved curriculum or implementation request.
+
 ## Brand Commitments
 Original name and geometric stream mark. Duolingo inspires approachable practice, not branding or copied assets. Kielipuro is the implementation's recommended working name; domain purchase requires explicit owner approval.
 

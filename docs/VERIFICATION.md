@@ -23,9 +23,13 @@ Cloudflare deployed the app and remote D1 migration successfully. Initial Worker
 - Monitor log: `2 issues reviewed; 0 Slack events delivered. No code changes or implementation actions.` Remote D1 heartbeat independently confirmed success at `2026-11-12 15:55:55` UTC.
 - Workflow API reports `active`; schedule is committed at minutes 7/22/37/52 UTC. Manual and event-triggered runs were observed. Scheduled delivery timing remains subject to GitHub's scheduler; see FEEDBACK.md.
 - Both samples are labelled `test:verification` and closed after verification, keeping the actionable backlog clean. No customer request was approved or implemented.
+- [Final 10-test CI run](https://github.com/ljack/kielipuro/actions/runs/43253580109) passed after hardening delayed approval handling.
+- [Sampsa's forwarded suggestion #3](https://github.com/ljack/kielipuro/issues/3) was automatically classified as `type:content` and `needs-owner-approval`; [monitor run](https://github.com/ljack/kielipuro/actions/runs/43253992188) succeeded. This was manual capture of owner-supplied feedback, not a live Slack delivery.
 
 ## Secrets
 
 Only `MONITOR_TOKEN` is installed in the Worker and GitHub Actions secret stores. Repository variable `FEEDBACK_URL` is configured. Credential-pattern scan of project source found no tokens/private keys. Ignored runtime files and dependency trees were not staged. A local Python health request returned HTTP 403; subsequent GitHub runner bridge access, live curl probes and the remote D1 heartbeat verified the deployed path successfully.
+
+Active Worker version after secret provisioning: `0cca8e44-5f4a-4c95-98d1-96d568bc81f4`, verified with Wrangler deployment history. Subsequent repository edits concern monitor approval checks and documentation; deployed app/Worker source is unchanged.
 
 Slack remains unconnected; local signed fixtures are not live Slack verification. No domain was purchased. Course content and scope are still undecided.
