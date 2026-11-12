@@ -30,3 +30,7 @@ test('a changed request needs a fresh owner decision and can be rejected or revo
   assert.equal(approvalState(old, [...comments, comment('ljack', '/reject', 2)], 'ljack', 'a').status, 'owner-declined');
   assert.equal(approvalState(old, [], 'ljack', 'a').status, 'needs-owner-approval');
 });
+test('first or delayed scans never apply an older owner decision to newer content', () => {
+  assert.equal(approvalState(null, [comment('ljack', '/approve')], 'ljack', 'new-content', '2026-11-12T11:00:00Z').status, 'needs-owner-approval');
+  assert.equal(approvalState(null, [comment('ljack', '/approve')], 'ljack', 'new-content', '2026-11-12T09:00:00Z').status, 'owner-approved');
+});

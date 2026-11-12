@@ -16,13 +16,16 @@ export function similarity(a, b) {
   const x = words(a), y = words(b); if (!x.size || !y.size) return 0;
   return [...x].filter(w => y.has(w)).length / new Set([...x, ...y]).size;
 }
-export function approvalState(previous, comments, owner, hash) {
+export function approvalState(previous, comments, owner, hash, latestChange = null) {
   const commands = comments.filter(c => c.user?.login === owner && /^\/(approve|reject)\s*$/.test(c.body || ''));
   const last = commands.at(-1);
   if (!last) return { command: null, approvedHash: null, status: 'needs-owner-approval' };
   // Editing a command counts as a new decision; editing the request does not silently refresh it.
   const command = `${last.id}:${last.updated_at || last.created_at}`;
-  const approvedHash = previous?.command === command ? previous.approvedHash : hash;
+  // A first/delayed scan cannot approve a request changed after the owner's command.
+  const commandTime = Date.parse(last.updated_at || last.created_at);
+  const decisionCoversChange = !latestChange || commandTime >= Date.parse(latestChange);
+  const approvedHash = previous?.command === command ? previous.approvedHash : decisionCoversChange ? hash : null;
   const status = last.body.trim() === '/reject' ? 'owner-declined' : approvedHash === hash ? 'owner-approved' : 'needs-owner-approval';
   return { command, approvedHash, status };
 }

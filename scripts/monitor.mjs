@@ -72,7 +72,8 @@ for (const issue of issues) {
   const revision = createHash('sha256').update(`${issue.title}\n${issue.body || ''}\n${discussion}\n${slackDiscussion}`).digest('hex');
   const stateComment = list.find(c => bot(c.user) && c.body.startsWith(marker));
   let previous; try { previous = JSON.parse(stateComment?.body.split('\n')[0].slice(marker.length, -4)); } catch { previous = null; }
-  const approval = approvalState(previous, list, owner, revision);
+  const latestChange = [issue.updated_at, ...list.filter(c => !bot(c.user) && c.user?.login !== owner || bot(c.user) && c.body.includes('<!-- kielipuro-source:')).map(c => c.updated_at)].filter(Boolean).sort().at(-1);
+  const approval = approvalState(previous, list, owner, revision, latestChange);
   const duplicate = issues.find(other => other.number < issue.number && fingerprint(other) === fingerprint(issue));
   const possible = !duplicate && issues.find(other => other.number < issue.number && similarity(`${other.title} ${contentOf(other)}`, `${issue.title} ${contentOf(issue)}`) >= 0.72);
   const managed = new Set(['feedback','needs-owner-approval','owner-approved','owner-declined','type:bug','type:idea','type:content','duplicate','possible-duplicate']);
