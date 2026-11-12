@@ -1,0 +1,15 @@
+{
+  "name": "kielipuro",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "engines": { "node": ">=22" },
+  "scripts": {
+    "dev": "wrangler dev",
+    "build": "wrangler deploy --dry-run --outdir .worker-build",
+    "deploy": "wrangler deploy",
+    "test": "node --test test/*.test.mjs",
+    "feedback:monitor": "node scripts/monitor.mjs"
+  },
+  "devDependencies": { "wrangler": "4.161.0" }
+}

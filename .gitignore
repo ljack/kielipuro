@@ -1,0 +1,12 @@
+node_modules/
+.wrangler/
+.worker-build/
+.env
+.env.*
+!.env.example
+.dev.vars*
+*.log
+.DS_Store
+artifacts/
+__pycache__/
+.impeccable/review/

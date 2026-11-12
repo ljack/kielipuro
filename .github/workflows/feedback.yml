@@ -1,0 +1,34 @@
+name: Feedback monitor
+on:
+  issues:
+    types: [opened, edited, reopened, labeled, unlabeled]
+  issue_comment:
+    types: [created, edited, deleted]
+  schedule:
+    - cron: '7,22,37,52 * * * *'
+  workflow_dispatch:
+permissions:
+  contents: read
+  issues: write
+concurrency:
+  group: feedback-monitor
+  cancel-in-progress: false
+jobs:
+  triage:
+    if: github.event.issue.pull_request == null
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: node scripts/monitor.mjs
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+          FEEDBACK_URL: ${{ vars.FEEDBACK_URL }}
+          MONITOR_TOKEN: ${{ secrets.MONITOR_TOKEN }}

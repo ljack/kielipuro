@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="fi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Kielipuro – japania pienin askelin, suomeksi. Kokeile ensimmäistä versiota ja auta kehittämään sitä.">
+  <meta name="theme-color" content="#faf8f1">
+  <title>Kielipuro – japania pienin askelin</title>
+  <link rel="icon" href="/mark.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/style.css">
+  <script type="module" src="/app.js"></script>
+</head>
+<body>
+  <a class="skip" href="#main">Siirry sisältöön</a>
+  <header class="site-header">
+    <a class="brand" href="/" aria-label="Kielipuro, etusivu"><img src="/mark.svg" alt="" width="40" height="40">Kielipuro</a>
+    <nav aria-label="Päänavigaatio"><a href="#kokeile">Kokeile</a><a href="#palaute">Anna palautetta</a></nav>
+    <span class="version">Ensiversio</span>
+  </header>
+  <main id="main">
+    <section class="intro" aria-labelledby="title">
+      <h1 id="title">Japania.<br>Pieni askel kerrallaan.</h1>
+      <div class="intro-copy"><p>Uusi kieli alkaa uteliaisuudesta. Kielipuroa rakennetaan suomenkielisille aloittelijoille — tervetuloa kokeilemaan.</p><p class="quiet">Tämä on ensimmäinen kokeiluversio. Varsinaiset oppitunnit ja kurssin laajuus suunnitellaan myöhemmin.</p></div>
+    </section>
+    <div class="workspace">
+      <section id="kokeile" class="practice" aria-labelledby="practice-title">
+        <div class="section-top"><h2 id="practice-title">Kokeile tuntumaa</h2><span class="tag">1 esimerkkitehtävä</span></div>
+        <p class="quiet">Tämä pieni esimerkki näyttää, miten vastaaminen toimii.</p>
+        <div id="exercise">
+          <p class="prompt">Mitä tämä tervehdys tarkoittaa?</p>
+          <div class="japanese"><span lang="ja">こんにちは</span><span class="romanization">konnichiwa</span></div>
+          <fieldset id="answers"><legend class="sr-only">Valitse suomennos</legend><label class="answer"><input type="radio" name="answer" value="thanks"><span>Kiitos</span></label><label class="answer"><input type="radio" name="answer" value="hello"><span>Hei / hyvää päivää</span></label><label class="answer"><input type="radio" name="answer" value="bye"><span>Näkemiin</span></label></fieldset>
+          <div id="answer-result" class="result" role="status" aria-live="polite"></div>
+          <button id="check" class="primary" disabled>Tarkista vastaus <span aria-hidden="true">→</span></button>
+        </div>
+        <div id="complete" hidden tabindex="-1"><div class="completion-mark" aria-hidden="true"><svg viewBox="0 0 48 48"><path d="m13 25 8 8 16-19"/></svg></div><h3>Ensimmäinen kokeilu tehty!</h3><p>Miltä vastaaminen tuntui? Havaintosi auttavat muovaamaan Kielipuroa.</p><div class="completion-actions"><a class="primary" href="#palaute">Kerro havaintosi <span aria-hidden="true">→</span></a><button id="again" class="text-button">Kokeile uudelleen</button></div></div>
+        <p id="saved" class="storage-note">Kokeilun tila tallentuu vain tähän selaimeen.</p>
+      </section>
+      <aside class="notebook" aria-labelledby="notebook-title"><h2 id="notebook-title">Rakennetaan yhdessä.</h2><p>Alkuun et tarvitse aiempaa japanin osaamista. Myös kokeneemman kielenoppijan havainnot ovat tervetulleita.</p><div class="notebook-note"><span class="small-label">Nyt kokeiltavana</span><p>Vastaamisen tuntuma ja palautteen antaminen.</p></div><div class="notebook-note"><span class="small-label">Seuraavaksi yhdessä</span><p>Millaisia harjoituksia tarvitaan? Sisältö ja eteneminen ovat vielä avoimia.</p></div><a class="inline-link" href="https://github.com/ljack/kielipuro/issues?q=is%3Aissue+is%3Aopen+label%3Aneeds-owner-approval">Katso avoimet ehdotukset <span aria-hidden="true">↗</span></a></aside>
+    </div>
+    <section id="palaute" class="feedback" aria-labelledby="feedback-title">
+      <div class="feedback-intro"><h2 id="feedback-title">Mikä toimisi paremmin?</h2><p>Yksi havainto riittää. Kerro, mitä kokeilit, mikä tuntui hyvältä tai missä jäit jumiin.</p><p class="quiet">Palaute siirtyy GitHubiin tarkistettavaksi. Kehitysehdotukset toteutetaan vasta omistajan hyväksynnän jälkeen.</p><div class="slack-note"><strong>Palautetta myös Slackissa</strong><p id="slack-status">Slack-yhteyden tilaa tarkistetaan…</p></div></div>
+      <form id="feedback-form">
+        <div class="form-row"><label>Palautteen tyyppi<select name="category"><option value="idea">Kehitysidea</option><option value="bug">Virhe tai toimimaton kohta</option><option value="content">Kieli tai selkeys</option></select></label><label>Kokemuksesi japanista<select name="experience"><option>Olen aloittelija</option><option>Osaan jo jonkin verran</option><option>Osaan jo hyvin</option><option>En halua kertoa</option></select></label></div>
+        <label>Otsikko<input name="title" maxlength="120" required placeholder="Esim. Vastausvaihtoehtojen teksti on pieni"></label>
+        <label>Havainto tai idea<textarea name="details" rows="4" maxlength="1500" required placeholder="Mitä tapahtui? Mitä toivoisit tilalle?"></textarea></label>
+        <label class="check-label"><input type="checkbox" name="multilingual"><span>Minulla on kokemusta useiden kielten opiskelusta.</span></label>
+        <p class="privacy">Seuraava vaihe avaa esitäytetyn GitHub-ehdotuksen. Tarvitset GitHub-tilin ja lähetät palautteen siellä. Palaute on julkinen: älä lisää henkilötietoja tai salaisuuksia.</p>
+        <button class="primary" type="submit">Jatka GitHubiin <span aria-hidden="true">↗</span></button><p class="form-status" id="form-status" role="status"></p>
+      </form>
+    </section>
+  </main>
+  <footer><a class="brand footer-brand" href="/">Kielipuro</a><span>Suomeksi. Omaan tahtiin.</span><a href="https://github.com/ljack/kielipuro">Projektin GitHub <span aria-hidden="true">↗</span></a></footer>
+</body>
+</html>

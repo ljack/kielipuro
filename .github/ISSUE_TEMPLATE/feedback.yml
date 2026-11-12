@@ -1,0 +1,31 @@
+name: Palaute tai idea
+description: Kerro havainto Kielipurosta. Toteutus edellyttää omistajan hyväksyntää.
+labels: [feedback, needs-owner-approval]
+body:
+  - type: markdown
+    attributes:
+      value: 'Palaute on julkinen. Älä lisää henkilötietoja, tunnuksia tai salaisuuksia.'
+  - type: dropdown
+    id: category
+    attributes:
+      label: Palautteen tyyppi
+      options: [idea, bug, content]
+    validations:
+      required: true
+  - type: textarea
+    id: observation
+    attributes:
+      label: Havainto tai idea
+      description: Mitä kokeilit ja mitä toivot? Yksi asia kerrallaan.
+    validations:
+      required: true
+  - type: dropdown
+    id: experience
+    attributes:
+      label: Tausta
+      options: [Olen aloittelija, Osaan japania jonkin verran, Osaan japania hyvin, En halua kertoa]
+  - type: textarea
+    id: context
+    attributes:
+      label: Muu tausta
+      description: Halutessasi kerro kokemuksestasi muiden kielten opiskelussa. Tämä ei valitse erillistä kurssia.

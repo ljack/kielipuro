@@ -1,0 +1,18 @@
+{
+  "display_information": {
+    "name": "Kielipuro",
+    "description": "Kielipuron palaute julkiseen GitHubiin. Mainitse botti; ketjun jatkoviestit tallentuvat samaan ehdotukseen.",
+    "background_color": "#176b5b"
+  },
+  "features": { "bot_user": { "display_name": "Kielipuro", "always_online": false } },
+  "oauth_config": { "scopes": { "bot": ["app_mentions:read", "channels:history", "channels:read", "groups:history", "groups:read", "chat:write"] } },
+  "settings": {
+    "event_subscriptions": {
+      "request_url": "https://kielipuro.jarkko-lietolahti.workers.dev/api/slack/events",
+      "bot_events": ["app_mention", "message.channels", "message.groups"]
+    },
+    "org_deploy_enabled": false,
+    "socket_mode_enabled": false,
+    "token_rotation_enabled": false
+  }
+}
